@@ -1,0 +1,6 @@
+@ClineIO.API_HostAddress = http://localhost:5259
+
+GET {{ClineIO.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

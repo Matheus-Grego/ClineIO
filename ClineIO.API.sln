@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClineIO.API", "ClineIO.API\ClineIO.API.csproj", "{0083570F-E663-4EDE-A9E6-F3728014B1FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClineIO.Core", "ClineIO.Core\ClineIO.Core.csproj", "{2F394F32-1AF0-4B86-A0F2-C3D90E4A9425}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClineIO.Application", "ClineIO.Application\ClineIO.Application.csproj", "{57E1B524-D17C-43FA-A2ED-3C764DDDBACB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClineIO.Infrastructure", "ClineIO.Infrastructure\ClineIO.Infrastructure.csproj", "{C6A5C387-405F-4589-ACA0-F68D895BDC30}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0083570F-E663-4EDE-A9E6-F3728014B1FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0083570F-E663-4EDE-A9E6-F3728014B1FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0083570F-E663-4EDE-A9E6-F3728014B1FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0083570F-E663-4EDE-A9E6-F3728014B1FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F394F32-1AF0-4B86-A0F2-C3D90E4A9425}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F394F32-1AF0-4B86-A0F2-C3D90E4A9425}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F394F32-1AF0-4B86-A0F2-C3D90E4A9425}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F394F32-1AF0-4B86-A0F2-C3D90E4A9425}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57E1B524-D17C-43FA-A2ED-3C764DDDBACB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57E1B524-D17C-43FA-A2ED-3C764DDDBACB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57E1B524-D17C-43FA-A2ED-3C764DDDBACB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57E1B524-D17C-43FA-A2ED-3C764DDDBACB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6A5C387-405F-4589-ACA0-F68D895BDC30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6A5C387-405F-4589-ACA0-F68D895BDC30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6A5C387-405F-4589-ACA0-F68D895BDC30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6A5C387-405F-4589-ACA0-F68D895BDC30}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
