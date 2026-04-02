@@ -2,9 +2,9 @@ namespace ClineIO.Core.Entities;
 
 public class Patient : Person
 {
-    public Patient(int cpf, string fullname, string email, int phoneNumber)
+    public Patient(int documentNumber, string fullname, string email, int phoneNumber)
     {
-        CPF = cpf;
+        DocumentNumber = documentNumber;
         FullName = fullname;
         Email = email;
         PhoneNumber = phoneNumber;
