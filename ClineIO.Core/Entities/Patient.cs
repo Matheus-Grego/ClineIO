@@ -2,13 +2,10 @@ namespace ClineIO.Core.Entities;
 
 public class Patient : Person
 {
-    public Patient(int documentNumber, string fullname, string email, int phoneNumber)
+    public Patient(int documentNumber, string fullname, string email, int phoneNumber, string zipCode) : base(documentNumber, fullname, email, phoneNumber, zipCode)
     {
-        DocumentNumber = documentNumber;
-        FullName = fullname;
-        Email = email;
-        PhoneNumber = phoneNumber;
+       
     }
 
-    public List<Appointment> appointments { get; set; }
+    public List<Appointment> AppointmentsAsPatient { get; private set; }
 }

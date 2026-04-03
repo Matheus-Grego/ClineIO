@@ -2,13 +2,11 @@ namespace ClineIO.Core.Entities;
 
 public class Appointment : BaseEntity
 {
-    public Guid PatientID { get; set; }
-    public Patient Patient { get; set; }
-    
-    public Guid MedicId { get; set; }
-    public Medic Medic { get; set; }
-    
-    public DateTime ApointmentDate { get; set; }
-    public DateTime EndTime { get; set; }
-    public DateTime StartTime { get; set; } 
+    public Guid PatientID { get; private set; }
+    public Patient Patient { get; private set; }
+    public Guid MedicId { get; private set; }
+    public Doctor Doctor { get; private set; }
+    public DateTime ApointmentDate { get; private set; }
+    public DateTime EndTime { get; private set; }
+    public DateTime StartTime { get; private set; } 
 }
