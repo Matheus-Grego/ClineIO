@@ -2,13 +2,14 @@ namespace ClineIO.Core.Entities;
 
 public class Person : BaseEntity
 {
+    protected Person() { }
     public Person(int documentNumber, string fullname, string email, int phoneNumber, string zipCode)
     {
         DocumentNumber = documentNumber;
         FullName = fullname;
         Email = email;
         PhoneNumber = phoneNumber;
-        ZipCode = ZipCode;
+        ZipCode = zipCode;
     }
     public int DocumentNumber { get; private set; }
     public string FullName { get; private set; }
