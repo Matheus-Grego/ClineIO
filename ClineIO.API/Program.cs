@@ -1,4 +1,6 @@
+using ClineIO.Core.Repositories;
 using ClineIO.Infrastructure;
+using ClineIO.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,7 @@ builder.Services.AddSwaggerGen();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<DbContextClineIO>(o => o.UseNpgsql(connectionString));
 
+builder.Services.AddScoped<IPatientRepository, PatientRepository>();
 
 var app = builder.Build();
 

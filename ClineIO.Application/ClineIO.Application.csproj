@@ -7,12 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Commands\Patient\" />
+      <PackageReference Include="MediatR" Version="14.1.0" />
+      <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="MediatR" Version="14.1.0" />
-      <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
+      <ProjectReference Include="..\ClineIO.Infrastructure\ClineIO.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

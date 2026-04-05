@@ -3,7 +3,7 @@ using MediatR;
 
 namespace ClineIO.Application.Queries.Patient.GetAllPatients;
 
-public class GetAllPatientsQuery : IRequest<Result<PatientViewModel>>
+public class GetAllPatientsQuery : IRequest<Result<List<PatientViewModel?>>>
 {
     public int Page { get; set; }
     public int PageSize { get; set; }
