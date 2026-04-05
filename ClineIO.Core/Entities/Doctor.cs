@@ -1,3 +1,5 @@
+using ClineIO.Core.Enums;
+
 namespace ClineIO.Core.Entities;
 
 public class Doctor : Person
@@ -9,5 +11,6 @@ public class Doctor : Person
         AppointmentsAsDoctor = [];
     }
     public int Credential { get; private set; }
+    public DoctorStatus Status { get; private set; }
     public List<Appointment> AppointmentsAsDoctor { get; private set; }
 }
