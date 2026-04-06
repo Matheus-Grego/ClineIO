@@ -14,8 +14,8 @@ public class AddPatientHandler : IRequestHandler<AddPatientCommand, Result>
     
     public async Task<Result> Handle(AddPatientCommand request, CancellationToken cancellationToken)
     {
-        var entity = request.ToEntity();
-        await _repository.AddPatient(entity);
+        var entity = request.ToEntity(); 
+        await _repository.Add(entity); 
         return Result.Success;
     }
 }

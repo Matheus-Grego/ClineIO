@@ -11,28 +11,28 @@ public class PatientRepository : IPatientRepository
     {
         _context = dbContext;
     }
-    public async Task<List<Patient>> GetAllPatients(int pageNumber = 0, int pageSize = 10)
+    public async Task<List<Patient>> GetAll(int pageNumber = 0, int pageSize = 10)
     {
         return await _context.Patients.ToListAsync();
     }
-    public async Task<Patient> GetPatientById(Guid patientId)
+    public async Task<Patient> GetById(Guid patientId)
     {
         return await _context.Patients.SingleOrDefaultAsync(p => p.Id == patientId);
     }
-    public async Task<Patient> GetPatientByPatientNumber(int patientNumber)
+    public async Task<Patient> GetPatientByPatientPhoneNumber(long patientNumber)
     {
         return await _context.Patients.SingleOrDefaultAsync(p => p.PhoneNumber == patientNumber);
     }
-    public async Task<Patient> GetPatientsByEmail(string patientEmail)
+    public async Task<Patient> GetPatientByEmail(string patientEmail)
     {
         return await _context.Patients.SingleOrDefaultAsync(p => p.Email == patientEmail);
     }
-    public async Task AddPatient(Patient patient)
+    public async Task Add(Patient patient)
     {
         await _context.Patients.AddAsync(patient);
         await _context.SaveChangesAsync();
     }
-    public async Task UpdatePatient(Patient patient)
+    public async Task Update(Patient patient)
     {
          _context.Patients.Update(patient);
          await _context.SaveChangesAsync();

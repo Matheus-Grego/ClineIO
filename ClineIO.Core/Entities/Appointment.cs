@@ -4,6 +4,7 @@ namespace ClineIO.Core.Entities;
 
 public class Appointment : BaseEntity
 {
+    protected Appointment(){}
     public Appointment(Guid patientId, Guid doctorId, DateTime apointmentDate, TimeOnly startTime, TimeOnly endTime)
     {
         PatientID = patientId;
@@ -16,7 +17,7 @@ public class Appointment : BaseEntity
     public Guid PatientID { get; private set; }
     public Patient Patient { get; private set; }
     public Guid MedicId { get; private set; }
-    public Doctor Doctor { get; private set; }
+    public Professional Professional { get; private set; }
     public DateTime ApointmentDate { get; private set; }
     public TimeOnly EndTime { get; private set; }
     public TimeOnly StartTime { get; private set; } 

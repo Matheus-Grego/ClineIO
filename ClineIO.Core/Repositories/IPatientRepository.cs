@@ -2,12 +2,9 @@ using ClineIO.Core.Entities;
 
 namespace ClineIO.Core.Repositories;
 
-public interface IPatientRepository
+public interface IPatientRepository : IBaseRepository<Patient>
 {
-    Task<List<Patient>> GetAllPatients(int pageNumber, int pageSize);
-    Task<Patient> GetPatientById(Guid patientId);
-    Task<Patient> GetPatientByPatientNumber(int patientNumber);
-    Task<Patient> GetPatientsByEmail(string patientEmail);
-    Task AddPatient(Patient patient);
-    Task UpdatePatient(Patient patient);
+    Task<Patient?> GetPatientByPatientPhoneNumber(long patientNumber);
+    Task<Patient?> GetPatientByEmail(string patientEmail);
+   
 }

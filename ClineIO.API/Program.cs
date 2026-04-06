@@ -1,3 +1,6 @@
+using ClineIO.API.Handlers;
+using ClineIO.Application;
+using ClineIO.Application.Commands.Patient.AddPatient;
 using ClineIO.Core.Repositories;
 using ClineIO.Infrastructure;
 using ClineIO.Infrastructure.Repositories;
@@ -13,6 +16,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi();
 
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddExceptionHandler<APIExceptionHandler>();
+
+builder.Services.AddApplicationModule();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<DbContextClineIO>(o => o.UseNpgsql(connectionString));

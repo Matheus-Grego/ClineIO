@@ -26,6 +26,8 @@ public class Result<T> : Result
     
     
     public static Result<T> Success(T? data) => new (data);
+    public static Result<T> Failure(string message) => new (default,false,message);
+
     
     public static Result<T> Failure(T? data, string message) => new (data,false, message);
 

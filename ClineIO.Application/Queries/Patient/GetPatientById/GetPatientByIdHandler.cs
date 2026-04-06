@@ -13,8 +13,11 @@ public class GetPatientByIdHandler : IRequestHandler<GetPatientByIdQuery, Result
     }
     public async Task<Result<PatientViewModel>> Handle(GetPatientByIdQuery request, CancellationToken cancellationToken)
     {
-        var result = await _repository.GetPatientById(request.Id);
+        var result = await _repository.GetById(request.Id);
         var patient = PatientViewModel.FromEntity(result);
+        if(result == null)
+            return Result<PatientViewModel>.Failure("Patient not found");
+        
         return Result<PatientViewModel>.Success(patient);
     }
 }

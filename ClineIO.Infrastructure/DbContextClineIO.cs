@@ -13,10 +13,10 @@ public class DbContextClineIO : DbContext
     }
     
     public DbSet<Appointment>  Appointments { get; set; }
-    public DbSet<Doctor>  Medics { get; set; }
-    public DbSet<Patient>  Patients { get; set; }
-    public DbSet<Nurse>  Nurses { get; set; }
-    
+    public DbSet<Professional>  Professionals { get; set; }
+    public DbSet<Patient> Patients { get; set; }
+    public DbSet<Tenent> Tenents { get; set; }
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.Entity<Appointment>(e =>
@@ -28,13 +28,13 @@ public class DbContextClineIO : DbContext
                 .HasForeignKey(a => a.PatientID)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            e.HasOne(a => a.Doctor)
-                .WithMany(d => d.AppointmentsAsDoctor)
+            e.HasOne(a => a.Professional)
+                .WithMany(d => d.AppointmentsAsProfessional)
                 .HasForeignKey(a => a.MedicId)
                 .OnDelete(DeleteBehavior.Restrict);
         });
 
-        builder.Entity<Doctor>(e =>
+        builder.Entity<Professional>(e =>
             {
                 e.HasKey(u => u.Id);
             }
@@ -45,9 +45,13 @@ public class DbContextClineIO : DbContext
                 e.HasKey(u => u.Id);
             }
         );
-        builder.Entity<Nurse>(e =>
+
+        builder.Entity<Tenent>(e =>
             {
                 e.HasKey(u => u.Id);
+
+                e.HasMany(t => t.Doctors)
+                    .WithMany(d => d.Tenents);
             }
         );
     }
