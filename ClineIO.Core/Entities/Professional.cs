@@ -10,7 +10,7 @@ public class Professional : Person
     {
         AppointmentsAsProfessional = [];
     }
-    public int Credential { get; private set; }
+    public string Credential { get; private set; }
     public DoctorStatus Status { get; private set; }
     public List<Appointment> AppointmentsAsProfessional { get; private set; }
     public List<Tenent> Tenents { get; set; }

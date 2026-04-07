@@ -6,6 +6,6 @@ public interface IProfessionalRepository : IBaseRepository<Professional>
 {
     Task<Professional?> GetProfessionalByPhone(long patientNumber);
     Task<Professional?> GetProfessionalByEmail(string patientEmail);
-    Task<Professional?> GetProfessionalByCredential(long credentialNumber);
+    Task<Professional?> GetProfessionalByCredential(string credentialNumber);
 
 }

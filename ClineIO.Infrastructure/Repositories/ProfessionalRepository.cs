@@ -43,7 +43,7 @@ public class ProfessionalRepository : IProfessionalRepository
         return await _context.Professionals.SingleOrDefaultAsync(x => x.Email == patientEmail);
     }
 
-    public async Task<Professional?> GetProfessionalByCredential(long credentialNumber)
+    public async Task<Professional?> GetProfessionalByCredential(string credentialNumber)
     {
         return await _context.Professionals.SingleOrDefaultAsync(x => x.Credential == credentialNumber);
     }

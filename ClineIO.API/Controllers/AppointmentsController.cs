@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ClineIO.API.Controllers;
 
+[ApiController]
+[Route("api/appointments")]
 public class AppointmentsController : ControllerBase
 {
     [HttpGet]
