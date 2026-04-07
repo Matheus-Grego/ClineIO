@@ -21,9 +21,9 @@ public class PatientController : ControllerBase
         _mediator = mediator;
     }
     [HttpGet]
-    public async Task<IActionResult> GetAllPatients()
+    public async Task<IActionResult> GetAllPatients([FromQuery]  GetAllPatientsQuery query)
     {
-        var result = await _mediator.Send(new GetAllPatientsQuery());
+        var result = await _mediator.Send(query);
         if (!result.IsSuccess)
         {
             return BadRequest();

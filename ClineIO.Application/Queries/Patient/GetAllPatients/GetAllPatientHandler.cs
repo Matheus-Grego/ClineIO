@@ -14,7 +14,7 @@ public class GetAllPatientHandler : IRequestHandler<GetAllPatientsQuery, Result<
     
     public async Task<Result<List<PatientViewModel?>>> Handle(GetAllPatientsQuery request, CancellationToken cancellationToken)
     {
-        var result = await _repository.GetAll(request.Page, request.PageSize);
+        var result = await _repository.GetAll(request.Page, request.PageSize, null);
         var patients = result.Select(patient => PatientViewModel.FromEntity(patient)).ToList();
         return Result<List<PatientViewModel>>.Success(patients);
     }

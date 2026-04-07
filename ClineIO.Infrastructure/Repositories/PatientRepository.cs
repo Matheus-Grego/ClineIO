@@ -11,21 +11,28 @@ public class PatientRepository : IPatientRepository
     {
         _context = dbContext;
     }
-    public async Task<List<Patient>> GetAll(int pageNumber = 0, int pageSize = 10)
+    public async Task<List<Patient?>> GetAll(int? pageNumber = 0, int? pageSize = 10, Guid? tenentId = null)
     {
-        return await _context.Patients.ToListAsync();
+        return await _context.Patients.AsNoTracking()
+            .Where(x => !x.IsDeleted)
+            .Skip((pageNumber.Value - 1) * pageSize.Value)
+            .Take(pageSize.Value)
+            .ToListAsync();
     }
-    public async Task<Patient> GetById(Guid patientId)
+    public async Task<Patient?> GetById(Guid patientId)
     {
-        return await _context.Patients.SingleOrDefaultAsync(p => p.Id == patientId);
+        return await _context.Patients.AsNoTracking()
+            .SingleOrDefaultAsync(p => p.Id == patientId);
     }
-    public async Task<Patient> GetPatientByPatientPhoneNumber(long patientNumber)
+    public async Task<Patient?> GetPatientByPatientPhoneNumber(long patientNumber)
     {
-        return await _context.Patients.SingleOrDefaultAsync(p => p.PhoneNumber == patientNumber);
+        return await _context.Patients.AsNoTracking()
+            .SingleOrDefaultAsync(p => p.PhoneNumber == patientNumber);
     }
-    public async Task<Patient> GetPatientByEmail(string patientEmail)
+    public async Task<Patient?> GetPatientByEmail(string patientEmail)
     {
-        return await _context.Patients.SingleOrDefaultAsync(p => p.Email == patientEmail);
+        return await _context.Patients.AsNoTracking()
+            .SingleOrDefaultAsync(p => p.Email == patientEmail);
     }
     public async Task Add(Patient patient)
     {

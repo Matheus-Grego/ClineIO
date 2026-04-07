@@ -1,3 +1,4 @@
+using ClineIO.Core.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,6 +16,18 @@ public class MedicalServiceController : ControllerBase
     
     [HttpGet]
     public async Task<IActionResult> GetAllMedicalServices()
+    {
+        return NoContent();
+    }
+    
+    [HttpPost]
+    public async Task<IActionResult> AddMedicalService()
+    {
+        return NoContent();
+    }
+    
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteMedicalService(Guid id)
     {
         return NoContent();
     }

@@ -1,4 +1,8 @@
 using ClineIO.Application.Commands.Professional.AddProfessional;
+using ClineIO.Application.Commands.Professional.DeleteProfessional;
+using ClineIO.Application.Commands.Professional.UpdateProfessional;
+using ClineIO.Application.Queries.Professionals.GetAllProfessionals;
+using ClineIO.Application.Queries.Professionals.GetProfessionalById;
 using MediatR;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
@@ -15,16 +19,26 @@ public class ProfessionalController : ControllerBase
         _mediator = mediator;
     }
     
-    [HttpGet]
-    public async Task<IActionResult> GetAllProfessionals()
+    [HttpGet()]
+    public async Task<IActionResult> GetAllProfessionals([FromQuery] GetAllProfessionalsQuery query)
     {
-        return NoContent();
+        var result = await _mediator.Send(query);
+        if (!result.IsSuccess)
+        {
+            return BadRequest();
+        }
+        return Ok(result);
     }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetProfessionalById(Guid id)
     {
-        return NoContent();
+        var result = await _mediator.Send(new GetProfessionalByIdQuery(id));
+        if (!result.IsSuccess)
+        {
+            return BadRequest();
+        }
+        return Ok(result);
     }
 
     [HttpPost]
@@ -39,14 +53,23 @@ public class ProfessionalController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateProfessional(Guid id)
+    public async Task<IActionResult> UpdateProfessional(Guid id,UpdateProfessionalCommand  command)
     {
+        command.Id = id;
+        var result = await _mediator.Send(command);
+        if (!result.IsSuccess)
+            return BadRequest();
+        
         return NoContent();
     }
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteProfessional(Guid id)
     {
+        var result = await _mediator.Send(new DeleteProfessionalCommand(id));
+        if (!result.IsSuccess)
+            return BadRequest();
+        
         return NoContent();
     }
 }
