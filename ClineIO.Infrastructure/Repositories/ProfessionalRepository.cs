@@ -13,7 +13,7 @@ public class ProfessionalRepository : IProfessionalRepository
     }
     public async Task<List<Professional>> GetAll(int pageNumber, int pageSize)
     {
-        return await _context.Professionals.ToListAsync();
+        return await _context.Professionals.Where(x => !x.IsDeleted).ToListAsync();
     }
 
     public async Task<Professional> GetById(Guid id)

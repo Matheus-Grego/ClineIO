@@ -1,3 +1,5 @@
+using ClineIO.Application.Commands.Professional.AddProfessional;
+using MediatR;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +9,12 @@ namespace ClineIO.API.Controllers;
 [Route("api/professional")]
 public class ProfessionalController : ControllerBase
 {
+    private readonly IMediator _mediator;
+    public ProfessionalController(IMediator mediator)
+    {
+        _mediator = mediator;
+    }
+    
     [HttpGet]
     public async Task<IActionResult> GetAllProfessionals()
     {
@@ -20,8 +28,13 @@ public class ProfessionalController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddProfessional()
+    public async Task<IActionResult> AddProfessional(AddProfessionalCommand command)
     {
+        var result = await _mediator.Send(command);
+        if (!result.IsSuccess)
+        {
+            return BadRequest();
+        }
         return NoContent();
     }
 

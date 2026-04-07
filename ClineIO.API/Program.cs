@@ -20,13 +20,14 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddExceptionHandler<APIExceptionHandler>();
 
 builder.Services.AddApplicationModule();
+builder.Services.AddInfrastructure(builder.Configuration);
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<DbContextClineIO>(o => o.UseNpgsql(connectionString));
 
-builder.Services.AddScoped<IPatientRepository, PatientRepository>();
-
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

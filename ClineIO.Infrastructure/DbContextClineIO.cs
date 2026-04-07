@@ -1,3 +1,4 @@
+using System.Text.Json.Nodes;
 using ClineIO.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +17,9 @@ public class DbContextClineIO : DbContext
     public DbSet<Professional>  Professionals { get; set; }
     public DbSet<Patient> Patients { get; set; }
     public DbSet<Tenent> Tenents { get; set; }
+    public DbSet<MedicalService> MedicalServices { get; set; }
+    public DbSet<TenentProfessional> TenentProfessionals { get; set; }
+
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -31,6 +35,11 @@ public class DbContextClineIO : DbContext
             e.HasOne(a => a.Professional)
                 .WithMany(d => d.AppointmentsAsProfessional)
                 .HasForeignKey(a => a.MedicId)
+                .OnDelete(DeleteBehavior.Restrict);
+            
+            e.HasOne(a => a.Category)
+                .WithMany() 
+                .HasForeignKey(a => a.CategoryId)
                 .OnDelete(DeleteBehavior.Restrict);
         });
 
@@ -50,10 +59,32 @@ public class DbContextClineIO : DbContext
             {
                 e.HasKey(u => u.Id);
 
-                e.HasMany(t => t.Doctors)
-                    .WithMany(d => d.Tenents);
+                e.HasMany(t => t.TenentProfessionals)
+                    .WithOne(tp => tp.Tenent)
+                    .HasForeignKey(tp => tp.TenentId);
             }
         );
+
+        builder.Entity<TenentProfessional>(e =>
+        {
+            e.HasKey(u => u.Id);
+            
+            e.Property(x => x.WorkScale)
+                .HasConversion(
+                    v => v.ToJsonString(),
+                    v => JsonNode.Parse(v).AsArray()
+                );
+
+            e.HasOne(x => x.Tenent)
+                .WithMany(t => t.TenentProfessionals)
+                .HasForeignKey(x => x.TenentId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            e.HasOne(x => x.Professional)
+                .WithMany(p => p.Tenents)
+                .HasForeignKey(x => x.ProfessionalId)
+                .OnDelete(DeleteBehavior.Restrict);
+        });
     }
     
     

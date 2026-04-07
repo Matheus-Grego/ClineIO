@@ -12,5 +12,6 @@ public class Tenent : BaseEntity
     public string City { get; set; }
     public string State { get; set; }
     public string ZipCode { get; set; }
-    public List<Professional?> Doctors { get; set; }
+    
+    public List<TenentProfessional> TenentProfessionals { get; set; } = [];
 }

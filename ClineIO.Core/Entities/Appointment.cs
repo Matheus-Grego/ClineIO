@@ -22,6 +22,8 @@ public class Appointment : BaseEntity
     public TimeOnly EndTime { get; private set; }
     public TimeOnly StartTime { get; private set; } 
     public ApointmentStatus Status { get; private set; }
+    public Guid CategoryId { get; set; }
+    public MedicalService Category { get; set; } 
 
     public void CompleteAppointment(Appointment appointment)
     {
