@@ -5,5 +5,5 @@ public enum DoctorStatus
     Available = 0,
     Busy,
     Unavailable,
-    
+    Banned
 }

@@ -4,7 +4,7 @@ namespace ClineIO.Core.Repositories;
 
 public interface IPatientRepository : IBaseRepository<Patient>
 {
-    Task<Patient?> GetPatientByPatientPhoneNumber(long patientNumber);
+    Task<Patient?> GetPatientByPatientPhoneNumber(string patientNumber);
     Task<Patient?> GetPatientByEmail(string patientEmail);
    
 }

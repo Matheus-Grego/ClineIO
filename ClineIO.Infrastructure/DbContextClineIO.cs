@@ -34,12 +34,17 @@ public class DbContextClineIO : DbContext
 
             e.HasOne(a => a.Professional)
                 .WithMany(d => d.AppointmentsAsProfessional)
-                .HasForeignKey(a => a.MedicId)
+                .HasForeignKey(a => a.ProfessionalId)
                 .OnDelete(DeleteBehavior.Restrict);
             
-            e.HasOne(a => a.Category)
+            e.HasOne(a => a.Tenent)
+                .WithMany()
+                .HasForeignKey(a => a.TenentId)
+                .OnDelete(DeleteBehavior.Restrict);
+            
+            e.HasOne(a => a.MedicalServiceCategory)
                 .WithMany() 
-                .HasForeignKey(a => a.CategoryId)
+                .HasForeignKey(a => a.MedicalServiceCategoryId)
                 .OnDelete(DeleteBehavior.Restrict);
         });
 

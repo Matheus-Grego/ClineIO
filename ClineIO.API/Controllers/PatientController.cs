@@ -86,7 +86,7 @@ public class PatientController : ControllerBase
         return Ok(result);
     }
     [HttpGet("phonenumber")]
-    public async Task<IActionResult> GetPatientByPhoneNumber([FromQuery] long PhoneNumber)
+    public async Task<IActionResult> GetPatientByPhoneNumber([FromQuery] string PhoneNumber)
     {
         var result = await _mediator.Send(new GetPatientByPhoneQuery(PhoneNumber));
         if (!result.IsSuccess)

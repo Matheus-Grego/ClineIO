@@ -5,9 +5,9 @@ namespace ClineIO.Application.Queries.Patient.GetPatientByPhone;
 
 public class GetPatientByPhoneQuery : IRequest<Result<PatientViewModel>>
 {
-    public GetPatientByPhoneQuery(long phoneNumber)
+    public GetPatientByPhoneQuery(string phoneNumber)
     {
         PhoneNumber = phoneNumber;
     }
-    public long PhoneNumber { get; set; }
+    public string PhoneNumber { get; set; }
 }

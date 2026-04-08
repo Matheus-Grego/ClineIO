@@ -24,7 +24,7 @@ public class PatientRepository : IPatientRepository
         return await _context.Patients.AsNoTracking()
             .SingleOrDefaultAsync(p => p.Id == patientId);
     }
-    public async Task<Patient?> GetPatientByPatientPhoneNumber(long patientNumber)
+    public async Task<Patient?> GetPatientByPatientPhoneNumber(string patientNumber)
     {
         return await _context.Patients.AsNoTracking()
             .SingleOrDefaultAsync(p => p.PhoneNumber == patientNumber);

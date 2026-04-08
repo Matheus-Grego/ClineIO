@@ -39,7 +39,7 @@ public class ProfessionalRepository : IProfessionalRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task<Professional?> GetProfessionalByPhone(long patientNumber)
+    public async Task<Professional?> GetProfessionalByPhone(string patientNumber)
     {
         return await _context.Professionals.AsNoTracking()
             .SingleOrDefaultAsync(x => x.PhoneNumber == patientNumber);

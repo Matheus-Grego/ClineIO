@@ -6,4 +6,5 @@ public enum ApointmentStatus
     InProgress = 1,
     Completed = 2,
     Canceled = 3,
+    Rescheduled = 4,
 }

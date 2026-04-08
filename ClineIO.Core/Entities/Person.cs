@@ -3,7 +3,7 @@ namespace ClineIO.Core.Entities;
 public class Person : BaseEntity
 {
     protected Person() { }
-    public Person(long documentNumber, string fullname, string email, long phoneNumber, string zipCode, string password)
+    public Person(string documentNumber, string fullname, string email, string phoneNumber, string zipCode, string password)
     {
         DocumentNumber = documentNumber;
         FullName = fullname;
@@ -12,10 +12,10 @@ public class Person : BaseEntity
         ZipCode = zipCode;
         Password = password;
     }
-    public long DocumentNumber { get; private set; }
+    public string DocumentNumber { get; private set; }
     public string FullName { get; private set; }
     public string Email { get; private set; }
-    public long PhoneNumber { get; private set; }
+    public string PhoneNumber { get; private set; }
     public string ZipCode { get; private set; }
     public string? Address { get; set; }
     public string? City { get; set; }
