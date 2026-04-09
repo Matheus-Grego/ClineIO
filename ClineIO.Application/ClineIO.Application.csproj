@@ -15,4 +15,8 @@
       <ProjectReference Include="..\ClineIO.Infrastructure\ClineIO.Infrastructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Commands\Appointment\" />
+    </ItemGroup>
+
 </Project>

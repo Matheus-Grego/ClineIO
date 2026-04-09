@@ -8,7 +8,9 @@ public class Tenent : BaseEntity
         string? address2,
         string city,
         string state,
-        string zipCode) : base()
+        string zipCode,
+        string? phoneNumber,
+        string? email) : base()
     {
         Name = name;
         Address1 = address1;
@@ -16,6 +18,8 @@ public class Tenent : BaseEntity
         City = city;
         State = state;
         ZipCode = zipCode;
+        PhoneNumber = phoneNumber;
+        Email = email;
     } 
     public string Name { get; set; }
     public string Address1 { get; set; }

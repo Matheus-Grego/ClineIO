@@ -1,3 +1,4 @@
+using ClineIO.Application.Commands.MedicalService.AddMedicalService;
 using ClineIO.Core.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -21,9 +22,12 @@ public class MedicalServiceController : ControllerBase
     }
     
     [HttpPost]
-    public async Task<IActionResult> AddMedicalService()
+    public async Task<IActionResult> AddMedicalService(AddMedicalServiceCommand command)
     {
-        return NoContent();
+        var result = await _mediator.Send(command);
+        if(!result.IsSuccess)
+            return BadRequest();
+        return CreatedAtAction("AddMedicalService", result);
     }
     
     [HttpDelete("{id}")]

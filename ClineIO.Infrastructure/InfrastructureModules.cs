@@ -19,6 +19,8 @@ public static class InfrastructureModules
         services.AddScoped<IPatientRepository, PatientRepository>();
         services.AddScoped<IProfessionalRepository, ProfessionalRepository>();
         services.AddScoped<ITenentRepository, TenentRepository>();
+        services.AddScoped<IMedicalServiceRepository, MedicalServiceRepository>();
+        services.AddScoped<IAppointmentRepository, AppointmentRepository>();
         return services;
     }
     

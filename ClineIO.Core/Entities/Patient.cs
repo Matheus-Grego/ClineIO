@@ -10,7 +10,6 @@ public class Patient : Person
     }
 
     public List<Appointment?> AppointmentsAsPatient { get; private set; }
-    
     public List<Appointment?> GetAppointmentHistory()
     {
         return AppointmentsAsPatient;

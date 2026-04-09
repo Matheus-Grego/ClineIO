@@ -14,5 +14,5 @@ public class AddTenentCommand : IRequest<Result>
     public string Phone { get; set; }
     public string Email { get; set; }
 
-    public Core.Entities.Tenent ToEntity() => new Core.Entities.Tenent(Name, Address1, Address2, City, State, ZipCode);
+    public Core.Entities.Tenent ToEntity() => new Core.Entities.Tenent(Name, Address1, Address2, City, State, ZipCode, Phone,Email);
 }
