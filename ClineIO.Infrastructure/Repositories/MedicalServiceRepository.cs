@@ -11,6 +11,10 @@ public class MedicalServiceRepository : IMedicalServiceRepository
     {
         _context = dbContext;
     }
+    public async Task<List<MedicalService?>> GetAll()
+    {
+        return await _context.MedicalServices.ToListAsync();
+    }
     public async Task<List<MedicalService?>> GetAll(int? pageNumber, int? pageSize, Guid? tenentId)
     {
         return await _context.MedicalServices.ToListAsync();

@@ -33,7 +33,6 @@ public class TenentController : ControllerBase
              return BadRequest();
          
          return NoContent();
-        
     }
     
 }
