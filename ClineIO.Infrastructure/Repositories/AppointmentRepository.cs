@@ -31,6 +31,20 @@ public class AppointmentRepository : IAppointmentRepository
         await _context.SaveChangesAsync();
     }
 
+    public async Task<Appointment> AddAppointment(Appointment entity)
+    {
+        await _context.Appointments.AddAsync(entity);
+        await _context.SaveChangesAsync();
+
+        return await _context.Appointments
+            .AsNoTracking()
+            .Include(x => x.Patient)
+            .Include(x => x.Professional)
+            .Include(x => x.Tenent)
+            .Include(x => x.MedicalServiceCategory)
+            .SingleOrDefaultAsync(x => x.Id == entity.Id);
+    }
+
     public async Task Update(Appointment entity)
     {
         _context.Appointments.Update(entity);

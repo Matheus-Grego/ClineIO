@@ -9,9 +9,8 @@ public class CreateAppointmentCommand : IRequest<Result>
     public Guid PatientID { get; set; }
     public Guid ProfessionalId { get; set; }
     public Guid? TenentId { get; set; }
-    public DateOnly ApointmentDate { get; set; }
-    public TimeOnly EndTime { get; set; }
-    public TimeOnly StartTime { get; set; } 
+    public DateTime EndTime { get; set; }
+    public DateTime StartTime { get; set; } 
     public decimal Price { get; set; }
     public PaymentModality PaymentModality { get; set; }
     public Guid MedicalServiceCategoryId { get; set; }
@@ -23,7 +22,6 @@ public class CreateAppointmentCommand : IRequest<Result>
         ProfessionalId,
         TenentId,
         MedicalServiceCategoryId,
-        ApointmentDate,
         StartTime,
         EndTime,
         Price,

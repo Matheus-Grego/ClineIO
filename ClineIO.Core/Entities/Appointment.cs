@@ -10,9 +10,8 @@ public class Appointment : BaseEntity
         Guid professionalId,
         Guid? tenentId,
         Guid medicalServiceCategoryId,
-        DateOnly apointmentDate,
-        TimeOnly startTime,
-        TimeOnly endTime,
+        DateTime startTime,
+        DateTime endTime,
         decimal price,
         AppointmentModality modality,
         PaymentModality paymentModality,
@@ -22,9 +21,8 @@ public class Appointment : BaseEntity
         ProfessionalId = professionalId;
         TenentId = tenentId;
         MedicalServiceCategoryId = medicalServiceCategoryId;
-        ApointmentDate = apointmentDate;
-        StartTime = startTime;
-        EndTime = endTime;
+        StartTime = startTime.ToUniversalTime();
+        EndTime = endTime.ToUniversalTime();
         Price = price;
         AppointmentModality = modality;
         PaymentModality = paymentModality;
@@ -37,9 +35,8 @@ public class Appointment : BaseEntity
     public Professional Professional { get; private set; }
     public Guid? TenentId { get; private set; }
     public Tenent? Tenent { get; private set; }
-    public DateOnly ApointmentDate { get; private set; }
-    public TimeOnly EndTime { get; private set; }
-    public TimeOnly StartTime { get; private set; } 
+    public DateTime EndTime { get; private set; }
+    public DateTime StartTime { get; private set; } 
     public ApointmentStatus Status { get; private set; }
     public decimal Price { get; private set; }
     public PaymentModality PaymentModality { get; private set; }
@@ -58,9 +55,8 @@ public class Appointment : BaseEntity
     {
         Status = ApointmentStatus.Canceled;
     }
-    public void RescheduleAppointment(DateOnly date, TimeOnly beginTime, TimeOnly endTime)
+    public void RescheduleAppointment(DateTime beginTime, DateTime endTime)
     {
-        ApointmentDate =  date;
         StartTime = beginTime;
         EndTime = endTime;
         Status = ApointmentStatus.Rescheduled;
