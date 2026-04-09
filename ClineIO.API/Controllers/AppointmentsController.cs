@@ -1,3 +1,6 @@
+using ClineIO.Application.Commands.Appointment.CreateAppointment;
+using ClineIO.Application.Models;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ClineIO.API.Controllers;
@@ -6,6 +9,11 @@ namespace ClineIO.API.Controllers;
 [Route("api/appointments")]
 public class AppointmentsController : ControllerBase
 {
+    private readonly IMediator _mediator;
+    public AppointmentsController(IMediator mediator)
+    {
+        _mediator = mediator;
+    }
     [HttpGet]
     public async Task<IActionResult> GetAllApointments()
     {
@@ -19,9 +27,13 @@ public class AppointmentsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateAppointemnt()
+    public async Task<IActionResult> CreateAppointemnt(CreateAppointmentCommand command)
     {
-        return NoContent();
+        var result = await _mediator.Send(command);
+        if (!result.IsSuccess)
+            return BadRequest();
+
+        return Ok(result);
     }
 
     [HttpPut]

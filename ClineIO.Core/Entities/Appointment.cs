@@ -15,7 +15,8 @@ public class Appointment : BaseEntity
         TimeOnly endTime,
         decimal price,
         AppointmentModality modality,
-        PaymentModality paymentModality)
+        PaymentModality paymentModality,
+        string? observation)
     {
         PatientID = patientId;
         ProfessionalId = professionalId;
@@ -28,6 +29,7 @@ public class Appointment : BaseEntity
         AppointmentModality = modality;
         PaymentModality = paymentModality;
         Status = ApointmentStatus.Scheduled;
+        Observation = observation;
     }
     public Guid PatientID { get; private set; }
     public Patient Patient { get; private set; }
