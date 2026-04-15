@@ -1,4 +1,5 @@
 using ClineIO.Application.Commands.MedicalService.AddMedicalService;
+using ClineIO.Application.Commands.MedicalService.DeleteMedicalService;
 using ClineIO.Application.Queries.MedicalServices.GetAllMedicalServices;
 using ClineIO.Core.Entities;
 using MediatR;
@@ -35,6 +36,9 @@ public class MedicalServiceController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteMedicalService(Guid id)
     {
+        var result = await _mediator.Send(new DeleteMedicalSerivceCommand(id));
+        if(!result.IsSuccess)
+            return BadRequest();
         return NoContent();
     }
 }
