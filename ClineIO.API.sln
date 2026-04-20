@@ -8,6 +8,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClineIO.Application", "Clin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClineIO.Infrastructure", "ClineIO.Infrastructure\ClineIO.Infrastructure.csproj", "{C6A5C387-405F-4589-ACA0-F68D895BDC30}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClineIO.Blazor", "ClineIO.Blazor\ClineIO.Blazor\ClineIO.Blazor.csproj", "{6B682618-122A-4EE1-91DE-5D09A3AD77BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClineIO.Blazor.Client", "ClineIO.Blazor\ClineIO.Blazor.Client\ClineIO.Blazor.Client.csproj", "{0B0736DD-5F86-46EF-BA48-B0A570AC1D71}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +34,13 @@ Global
 		{C6A5C387-405F-4589-ACA0-F68D895BDC30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6A5C387-405F-4589-ACA0-F68D895BDC30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6A5C387-405F-4589-ACA0-F68D895BDC30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B682618-122A-4EE1-91DE-5D09A3AD77BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B682618-122A-4EE1-91DE-5D09A3AD77BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B682618-122A-4EE1-91DE-5D09A3AD77BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B682618-122A-4EE1-91DE-5D09A3AD77BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B0736DD-5F86-46EF-BA48-B0A570AC1D71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B0736DD-5F86-46EF-BA48-B0A570AC1D71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B0736DD-5F86-46EF-BA48-B0A570AC1D71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B0736DD-5F86-46EF-BA48-B0A570AC1D71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
