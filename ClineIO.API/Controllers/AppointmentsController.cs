@@ -1,5 +1,9 @@
 using ClineIO.Application.Commands.Appointment.CreateAppointment;
+using ClineIO.Application.Commands.Appointment.DeleteAppointment;
 using ClineIO.Application.Models;
+using ClineIO.Application.Queries.Appointments;
+using ClineIO.Application.Queries.Appointments.GetAllAppointments;
+using ClineIO.Application.Queries.Appointments.GetAppointmentById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,15 +18,24 @@ public class AppointmentsController : ControllerBase
     {
         _mediator = mediator;
     }
+    
     [HttpGet]
-    public async Task<IActionResult> GetAllApointments()
+    public async Task<IActionResult> GetAllTenentApointments([FromQuery]  GetAllAppointmentsQuery query)
     {
-        return NoContent();
+        var result = await _mediator.Send(query);
+        if (!result.IsSuccess)
+            return BadRequest();
+
+        return Ok(result);
     }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetAppointmentById(Guid id)
     {
+        var result = await _mediator.Send(new GetAppointmentByIdQuery(id));
+        if (!result.IsSuccess)
+            return BadRequest();
+
         return NoContent();
     }
 
@@ -35,15 +48,15 @@ public class AppointmentsController : ControllerBase
 
         return Ok(result);
     }
-
-    [HttpPut]
-    public async Task<IActionResult> UpdateAppointemnt(Guid id)
-    {
-        return NoContent();
-    }
     
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteAppointment(Guid id){
+    public async Task<IActionResult> DeleteAppointment(Guid id)
+    {
+
+        var result = await _mediator.Send(new DeleteAppointmentCommand(id));
+        if (!result.IsSuccess)
+            return BadRequest();
+
         return NoContent();
     }
     

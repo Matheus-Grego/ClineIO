@@ -19,7 +19,7 @@ public class ProfessionalController : ControllerBase
         _mediator = mediator;
     }
     
-    [HttpGet()]
+    [HttpGet]
     public async Task<IActionResult> GetAllProfessionals([FromQuery] GetAllProfessionalsQuery query)
     {
         var result = await _mediator.Send(query);

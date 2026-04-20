@@ -1,6 +1,8 @@
 using ClineIO.Application.Commands.Tenent.AddTenent;
+using ClineIO.Application.Commands.Tenent.DeleteTenent;
 using ClineIO.Application.Queries.Professionals.GetAllProfessionals;
 using ClineIO.Application.Queries.Tenents.GetAllTenents;
+using ClineIO.Application.Queries.Tenents.GetTenentById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,6 +26,15 @@ public class TenentController : ControllerBase
             return BadRequest();
         return Ok(result);    
     }
+    
+    [HttpPut("{id}")]
+    public async Task<IActionResult> GetTenentById(Guid id)
+    {
+        var result = await _mediator.Send(new GetTenentByIdQuery(id));
+        if (!result.IsSuccess)
+            return BadRequest();
+        return Ok(result);    
+    }
 
     [HttpPost]
     public async Task<IActionResult> AddTenent(AddTenentCommand command)
@@ -33,6 +44,17 @@ public class TenentController : ControllerBase
              return BadRequest();
          
          return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteTenent(Guid id)
+    {
+        var result = await _mediator.Send(new DeleteTenentCommand(id));
+        if(!result.IsSuccess)
+            return BadRequest();
+         
+        return NoContent();
+        
     }
     
 }

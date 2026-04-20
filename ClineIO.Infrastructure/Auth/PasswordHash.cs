@@ -20,5 +20,10 @@ public static class PasswordHash
             return builder.ToString();
         }
     }
+
+    public static bool ComparePassword(string Password, string HashedPassword)
+    {
+        return string.Compare(HashPassword(Password), HashedPassword) == 0;
+    }
     
 }

@@ -31,4 +31,9 @@ public class Tenent : BaseEntity
     public string? Email { get; set; }
     
     public List<TenentProfessional> TenentProfessionals { get; set; } = [];
+
+    public void DeleteTenent()
+    {
+        IsDeleted = true;
+    }
 }

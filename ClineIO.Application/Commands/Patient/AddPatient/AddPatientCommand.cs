@@ -1,5 +1,6 @@
 using ClineIO.Application.Models;
 using ClineIO.Core.Entities;
+using ClineIO.Infrastructure.Auth;
 using MediatR;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
@@ -16,5 +17,5 @@ public class AddPatientCommand : IRequest<Result>
     public char Gender { get; set; }
     public string Password { get; set; }
     
-    public Core.Entities.Patient ToEntity() => new (DocumentNumber, FullName, Email, PhoneNumber, ZipCode, Password);
+    public Core.Entities.Patient ToEntity() => new (DocumentNumber, FullName, Email, PhoneNumber, ZipCode, PasswordHash.HashPassword(Password));
 }

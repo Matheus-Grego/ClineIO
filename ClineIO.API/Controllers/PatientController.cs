@@ -95,5 +95,11 @@ public class PatientController : ControllerBase
         }
         return Ok(result);
     }
+
+    [HttpPost("login")]
+    public async Task<IActionResult> Login()
+    {
+        return NoContent();
+    }
     
 }
