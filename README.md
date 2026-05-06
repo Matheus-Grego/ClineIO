@@ -32,11 +32,10 @@ O sistema foi desenvolvido com separação de responsabilidades:
 - .NET (ASP.NET Core Web API)
 - C#
 - Entity Framework Core
-- SQL Server / PostgreSQL
+- PostgreSQL
 - JWT (Authentication)
 - Swagger
-- React / Angular (opcional no frontend)
-- Docker (opcional)
+- Docker 
 
 ---
 
